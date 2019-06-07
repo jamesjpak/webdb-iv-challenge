@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
 })
 
 // GET for recipes
-router.get('/recipes', async (req, res) => {
+router.get('/recipes', (req, res) => {
     Dishes.getRecipes()
     .then(recipes => {
         res.status(200).json(recipes);
