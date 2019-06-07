@@ -34,6 +34,19 @@ function getDish(id) {
     .insert(dish, 'id')
     .then(ids => {
         const [id] = ids;
-        return findById(id)
+        return getDish(id)
+    })
+}
+
+function getRecipes() {
+    return db('recipes')
+}
+
+function addRecipe() {
+    return db('recipes')
+    .insert(recipe, 'id')
+    .then(ids => {
+        const [id] = ids;
+        return this.get(id)
     })
 }

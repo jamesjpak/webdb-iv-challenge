@@ -35,5 +35,26 @@ router.post('/', (req, res) => {
     })
 })
 
+// GET for recipes
+router.get('/recipes', async (req, res) => {
+    Dishes.getRecipes()
+    .then(recipes => {
+        res.status(200).json(recipes);
+    })
+    .catch(error => {
+        res.status(500).json(error)
+    })
+})
+
+router.post('/recipes', (req, res) => {
+    Dishes.addRecipe(req.body, "id")
+    .then(recipe => {
+        res.status(201).json(recipe)
+    })
+    .catch(error => {
+        res.status(500).json(error)
+    })
+})
+
 
 module.exports = router;
